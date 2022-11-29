@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import useFetch from './hooks/CustomHooks';
+import UseCallBackHooks from './hooks/UseCallBackHooks';
+import UseContextHooks from './hooks/UseContextHooks';
+import UseEffectHooks from './hooks/UseEffectHooks';
+import UseMemoHooks from './hooks/UseMemoHooks';
+import UseReducerHooks from './hooks/UseReducerHooks';
+import UseRefHooks from './hooks/UseRefHooks';
+import UseStateHooks from './hooks/UseStateHooks';
 
 function App() {
+  const data = useFetch("https://jsonplaceholder.typicode.com/todos")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <UseStateHooks /> */}
+      {/* <UseEffectHooks /> */}
+      {/* <UseRefHooks /> */}
+      {/* <UseCallBackHooks /> */}
+      {/* <UseMemoHooks /> */}
+      {/* <UseReducerHooks /> */}
+      {/* <UseContextHooks /> */}
+      {data &&
+        data.map((item) => {
+          return <p key={item.id}>{item.title}</p>;
+        })}
+    </>
   );
 }
 
